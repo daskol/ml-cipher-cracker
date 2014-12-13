@@ -1,0 +1,66 @@
+\documentclass[letter,12pt, epsfig]{article}
+
+% Math support
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\jot = 1.5ex
+\def\baselinestretch{1.2}
+\parskip 5pt plus 1pt
+
+\evensidemargin 0.0in
+\oddsidemargin 0.0in
+\textwidth 6.0in
+\textheight 8.5in
+\hoffset .7 cm
+\voffset -1 cm
+\headsep .75in
+
+\begin{document}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\beas}{\begin{eqnarray*}}
+\newcommand{\eeas}{\end{eqnarray*}}
+\newcommand{\defi}{\stackrel{\rm def}{=}}
+\newcommand{\non}{\nonumber}
+\newcommand{\bquo}{\begin{quote}}
+\newcommand{\enqu}{\end{quote}}
+
+\hfill
+\vspace{18pt}
+\begin{center}
+    \Large \textbf{ML Cipher Cracker}
+\end{center}
+
+\vspace{6pt}
+\begin{center}
+%   Lexicographical ordering
+	\large\textsl{Daniel Bershatsky}, 
+	\large\textsl{Yaroslav Kishchenko} \\
+    \vspace{25pt}
+    \textit{\small  Skolkovo Institute of Science and Technology}\\
+    \vspace{6pt}
+\end{center}
+
+\vspace{12pt}
+\vspace{4pt}
+
+\input{abstract}
+
+\vspace{1cm}
+
+\input{introduction}
+\input{description}
+\input{conclusion}
+
+\begin{thebibliography}{23}
+
+\bibitem{book}
+\end{thebibliography}
+
+\end{document}

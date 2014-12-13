@@ -1,0 +1,5 @@
+# Ignore pdflatex logs and pdfs
+/doc/**/*.log
+/doc/**/*.aux
+/doc/**/*.pdf
+/doc/**/*.synctex.gz
