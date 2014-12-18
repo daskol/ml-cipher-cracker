@@ -1,5 +1,5 @@
-
-# coding: utf-8
+#!/usr/bin/env python2
+#   -*- coding: utf-8 -*-
 
 # In[15]:
 
@@ -15,14 +15,9 @@ from numpy.random import rand
 # In[1]:
 
 def read_text_words(filename, wordsnumber):
-    X = list()
     with open(filename) as f:
-        for i in xrange(wordsnumber):
-            line = f.readline()
-            if not line:
-                print 'reached end of file'
-                break            
-            X.append(line)     
+        X = f.readlines()
+        wordsnumber = len(X)
     X = ''.join(X) 
     X = X.replace('\n', '{') #123
     return X
@@ -325,8 +320,9 @@ def get_desiredPDF_bigram(permutation):
 
 # In[ ]:
 
-fname = 'main\oliver_twist.txt'
+fname = 'main/oliver_twist.txt'
 test_text = read_text_words(fname, 5000)
+#   TODO: wat is original?
 encrypted = crypt(original)
 print encrypted[:20]
 
@@ -338,7 +334,7 @@ print encrypted[:20]
 sizes =  [2,4,8,16]
 for s in sizes:   
     i=0
-    train_text = read_text_filesize('main\super.txt', s)
+    train_text = read_text_filesize('main/super.txt', s)
     unistats = get_unigram_stats(train_text)
     counts = get_unicount(train_text)
     bistats = get_bigram_stats_dic(train_text)
@@ -361,13 +357,13 @@ print train_text[:1000]
 # In[13]:
 
 #TEST TEXT
-fname = 'main\oliver_twist.txt'
+fname = 'main/oliver_twist.txt'
 original = read_text_words(fname, 1000)
 encrypted, p = crypt(original)
 
 #TRAIN TEXT
 length = 575514
-train_text = read_text_words('main\war_and_peace.txt', length)
+train_text = read_text_words('main/war_and_peace.txt', length)
 counts = get_unicount(train_text)
 stats = get_bigram_stats_dic(train_text)
 print p
