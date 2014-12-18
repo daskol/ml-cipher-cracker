@@ -1,6 +1,9 @@
 #!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 import unittest
+import os
+parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+os.sys.path.insert(0,parentdir) 
 import metropolis
 import scipy.stats
 """
@@ -17,13 +20,14 @@ class TestMetropolis( unittest.TestCase ):
         self.computableGen = lambda t: scipy.stats.norm( loc = t ).rvs()
         
         self.n = 10000
+	self.skipSteps = 5000
         
     def test_metropolis( self ):
         """
         Testing metropolis algorithm using KS test.
         """
         
-        metropolisGen = metropolis.metropolis( self.desiredDistribution.pdf, 0, self.computableGen )
+        metropolisGen = metropolis.metropolis( self.desiredDistribution.pdf, 0, self.computableGen, self.skipSteps )
         
         #sample from generator
         x = []
@@ -41,7 +45,7 @@ class TestMetropolis( unittest.TestCase ):
         Testing density maximization algorithm, comparing density of each object with next object from sample.
         """
         
-        densityMaximization = metropolis.densityMaximization( self.desiredDistribution.pdf, 0, self.computableGen )
+        densityMaximization = metropolis.densityMaximization( self.desiredDistribution.pdf, 0, self.computableGen, self.skipSteps )
         
         #in a cycle check that density of next pbject is not less than of current one
         densityValueOld = None
