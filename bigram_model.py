@@ -16,9 +16,8 @@ from numpy.random import rand
 
 def read_text_words(filename, wordsnumber):    
     with open(filename) as f:
-        for i in xrange(wordsnumber):
-            X = f.readlines()
-            wordsnumber = len(X)    
+        X = f.readlines()
+        wordsnumber = len(X)    
     X = ''.join(X) 
     X = X.replace('\n', '{') #123
     return X
