@@ -40,6 +40,8 @@ def metropolis( desiredPDF, initValue, computableRVS, skipIterations = 200 ):
         """
         probability to accept candidate to sample
         """
+
+        print(candidate, candidateDensityValue)
         
         if log( random() ) < acceptanceProb:
             random_variable = candidate
@@ -47,6 +49,7 @@ def metropolis( desiredPDF, initValue, computableRVS, skipIterations = 200 ):
             
     #now when the procces is converged to desired distribution, return acceptable candidates
     while True:
+        print('While loop')
         candidate = computableRVS( random_variable )
         candidateDensityValue = desiredPDF( candidate )
         """
@@ -57,12 +60,14 @@ def metropolis( desiredPDF, initValue, computableRVS, skipIterations = 200 ):
         """
         probability to accept candidate to sample
         """
+
+        print(candidate, candidateDensityValue)
         
         if log( random() ) < acceptanceProb:
+            print('Update')
             random_variable = candidate
             random_variableDensityValue = candidateDensityValue
-
-	yield random_variable, random_variableDensityValue
+        yield random_variable, random_variableDensityValue
 
 def densityMaximization( desiredPDF, initValue, computableRVS, skipIterations = 200 ):
     """
