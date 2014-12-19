@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from random import randint
+from random import randint, sample
 from copy import copy
 """
 This module provide some functions, that generate random permutations with different distributions. There are a uniform distribution and a symmetric distribution, which depends on some other permutation.
@@ -50,7 +50,7 @@ def applyedTranspostions( basePermutation ):
     
     #apply n random transpositions (including identical) to base permutation
     for i in xrange( n ):
-        k, l = randint( 0, n - 1 ), randint( 0, n - 1 )
+        k, l = sample( range( n ), 2 )
         permutation[ k ], permutation[ l ] = permutation[ l ], permutation[ k ]
         
     return  permutation
